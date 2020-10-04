@@ -16,7 +16,8 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color.blue.edgesIgnoringSafeArea(.all)
+            LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
             VStack(spacing: 30) {
                 VStack {
                     Text("Tap the flag of")
@@ -24,7 +25,6 @@ struct ContentView: View {
                     Text(countries[correctAnswer])
                         .foregroundColor(.white)
                 }
-
             
                 ForEach(0 ..< 3) { number in
                     Button(action: {
@@ -34,8 +34,18 @@ struct ContentView: View {
                             .renderingMode(.original)
                     }
                 }
-                Spacer()
+                
+                VStack {
+                    Text("\(playerScore)")
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    Text("High Score")
+                        .foregroundColor(.white)
+                        .padding(.bottom, 20)
+                }
             }
+            
         }
         .alert(isPresented: $showingScore, content: {
             Alert(title: Text(scoreTitle), message: Text("Your score is \(playerScore)"), dismissButton: .default(Text("Continue")) {
