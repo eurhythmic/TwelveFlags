@@ -24,6 +24,8 @@ struct ContentView: View {
                         .foregroundColor(.white)
                     Text(countries[correctAnswer])
                         .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .fontWeight(.black)
                 }
             
                 ForEach(0 ..< 3) { number in
@@ -32,6 +34,9 @@ struct ContentView: View {
                     }) {
                         Image(self.countries[number])
                             .renderingMode(.original)
+                            .clipShape(Capsule())
+                            .overlay(Capsule().stroke(Color.black, lineWidth: 1))
+                            .shadow(color: .black, radius: 2)
                     }
                 }
                 
