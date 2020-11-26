@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
-    @State private var correctAnswer = Int.random(in: 0...2)
-    @State private var showingScore = false
-    @State private var scoreTitle = ""
-    @State private var playerScore = 0
+    @ObservedObject var viewModel = ContentViewModel()
     
     var body: some View {
         ZStack {
@@ -22,7 +18,7 @@ struct ContentView: View {
                 VStack {
                     Text("Tap the flag of")
                         .foregroundColor(.white)
-                    Text(countries[correctAnswer])
+                    Text(viewModel.countries[viewModel.correctAnswer])
                         .foregroundColor(.white)
                         .font(.largeTitle)
                         .fontWeight(.black)
@@ -32,7 +28,7 @@ struct ContentView: View {
                     Button(action: {
                         self.flagTapped(number)
                     }) {
-                        Image(self.countries[number])
+                        Image(viewModel.countries[number])
                             .renderingMode(.original)
                             .clipShape(Capsule())
                             .overlay(Capsule().stroke(Color.black, lineWidth: 1))
@@ -41,7 +37,7 @@ struct ContentView: View {
                 }
                 
                 VStack {
-                    Text("\(playerScore)")
+                    Text("\(viewModel.playerScore)")
                         .foregroundColor(.white)
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -52,30 +48,30 @@ struct ContentView: View {
             }
             
         }
-        .alert(isPresented: $showingScore, content: {
-            Alert(title: Text(scoreTitle), message: Text("Your score is \(playerScore)"), dismissButton: .default(Text("Continue")) {
+        .alert(isPresented: $viewModel.showingScore, content: {
+            Alert(title: Text(viewModel.scoreTitle), message: Text("Your score is \(viewModel.playerScore)"), dismissButton: .default(Text("Continue")) {
                 self.askQuestion()
             })
         })
     }
     
     func flagTapped(_ number: Int) {
-        if number == correctAnswer {
-            scoreTitle = "Correct"
-            playerScore += 1
+        if number == viewModel.correctAnswer {
+            viewModel.scoreTitle = "Correct"
+            viewModel.playerScore += 1
         } else {
-            scoreTitle = "Wrong"
-            if playerScore > 0 {
-                playerScore -= 1
+            viewModel.scoreTitle = "Wrong"
+            if viewModel.playerScore > 0 {
+                viewModel.playerScore -= 1
             }
         }
         
-        showingScore = true
+        viewModel.showingScore = true
     }
     
     func askQuestion() {
-        countries.shuffle()
-        correctAnswer = Int.random(in: 0...2)
+        viewModel.countries.shuffle()
+        viewModel.correctAnswer = Int.random(in: 0...2)
     }
 }
 

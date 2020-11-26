@@ -11,6 +11,7 @@
 		BC5D1A47252966950039A0D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D1A46252966950039A0D9 /* ContentView.swift */; };
 		BC5D1A49252966970039A0D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC5D1A48252966970039A0D9 /* Assets.xcassets */; };
 		BC5D1A4C252966970039A0D9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC5D1A4B252966970039A0D9 /* Preview Assets.xcassets */; };
+		BCB997D9256F333600BACDBC /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB997D8256F333600BACDBC /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		BC5D1A48252966970039A0D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC5D1A4B252966970039A0D9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BC5D1A4D252966970039A0D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCB997D8256F333600BACDBC /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				BC5D1A44252966950039A0D9 /* TwelveFlagsApp.swift */,
 				BC5D1A46252966950039A0D9 /* ContentView.swift */,
+				BCB997D8256F333600BACDBC /* ContentViewModel.swift */,
 				BC5D1A48252966970039A0D9 /* Assets.xcassets */,
 				BC5D1A4D252966970039A0D9 /* Info.plist */,
 				BC5D1A4A252966970039A0D9 /* Preview Content */,
@@ -140,6 +143,7 @@
 			files = (
 				BC5D1A47252966950039A0D9 /* ContentView.swift in Sources */,
 				BC5D1A45252966950039A0D9 /* TwelveFlagsApp.swift in Sources */,
+				BCB997D9256F333600BACDBC /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
