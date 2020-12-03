@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var viewModel = ContentViewModel()
+    @ObservedObject var content = ContentViewModel()
+    let floating = FloatingNoticeViewModel()
     
     var body: some View {
         ZStack {
@@ -18,60 +19,67 @@ struct ContentView: View {
                 VStack {
                     Text("Tap the flag of")
                         .foregroundColor(.white)
-                    Text(viewModel.countries[viewModel.correctAnswer])
+                    Text(content.countries[content.correctAnswer])
                         .foregroundColor(.white)
                         .font(.largeTitle)
                         .fontWeight(.black)
                 }
-            
                 ForEach(0 ..< 3) { number in
-                    Button(action: {
-                        self.flagTapped(number)
-                    }) {
-                        Image(viewModel.countries[number])
-                            .renderingMode(.original)
-                            .clipShape(Capsule())
-                            .overlay(Capsule().stroke(Color.black, lineWidth: 1))
-                            .shadow(color: .black, radius: 2)
-                    }
+                        Button(action: {
+                            flagTapped(number)
+                        }) {
+                            Image(content.countries[number])
+                                .renderingMode(.original)
+                                .clipShape(Capsule())
+                                .overlay(Capsule().stroke(Color.black, lineWidth: 1))
+                                .shadow(color: .black, radius: 2)
+                        }.disabled(content.isAnswerSelected)
                 }
-                
                 VStack {
-                    Text("\(viewModel.playerScore)")
+                    Text("\(content.playerScore)")
                         .foregroundColor(.white)
                         .font(.largeTitle)
                         .fontWeight(.bold)
+                        .transition(AnyTransition.scale.animation(.easeInOut(duration: 0.25)))
+                        .id("playerScore \(content.playerScore)")
                     Text("High Score")
                         .foregroundColor(.white)
                         .padding(.bottom, 20)
                 }
             }
             
+            if content.showingNotice {
+                FloatingNoticeView().environmentObject(floating)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                content.showingNotice.toggle()
+                                askQuestion()
+                            }
+                        }
+            }
         }
-        .alert(isPresented: $viewModel.showingScore, content: {
-            Alert(title: Text(viewModel.scoreTitle), message: Text("Your score is \(viewModel.playerScore)"), dismissButton: .default(Text("Continue")) {
-                self.askQuestion()
-            })
-        })
     }
     
     func flagTapped(_ number: Int) {
-        if number == viewModel.correctAnswer {
-            viewModel.scoreTitle = "Correct"
-            viewModel.playerScore += 1
+        content.isAnswerSelected.toggle()
+        
+        if number == content.correctAnswer {
+            floating.symbol = "checkmark.seal"
+            content.playerScore += 1
         } else {
-            viewModel.scoreTitle = "Wrong"
-            if viewModel.playerScore > 0 {
-                viewModel.playerScore -= 1
+            floating.symbol = "xmark.seal"
+            if content.playerScore > 0 {
+                content.playerScore -= 1
             }
         }
         
-        viewModel.showingScore = true
+        content.showingNotice = true
     }
     
     func askQuestion() {
-        viewModel.countries.shuffle()
-        viewModel.correctAnswer = Int.random(in: 0...2)
+        content.countries.shuffle()
+        content.correctAnswer = Int.random(in: 0...2)
+        content.isAnswerSelected.toggle()
     }
 }
 
