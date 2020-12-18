@@ -16,9 +16,10 @@ struct FloatingNoticeView: View {
                 .foregroundColor(.white)
                 .font(.system(size: 48, weight: .regular))
                 .padding()
-                .background(Color.blue.opacity(0.40))
-                .overlay(RoundedRectangle(cornerRadius: 15.0).stroke(Color.blue, lineWidth: 6).opacity(0.5))
+                .background(Color.blue.opacity(0.8))
+                .overlay(RoundedRectangle(cornerRadius: 15.0).stroke(Color.blue, lineWidth: 6))
                 .cornerRadius(15)
+                .glow(color: .white, radius: 90)
                 .transition(.scale)
          }
      }
