@@ -13,4 +13,6 @@ class ContentViewModel: ObservableObject {
     @Published var showingNotice = false
     @Published var playerScore = 0
     @Published var isAnswerSelected = false
+    @Published var showSubmitScoreView = false
+    @Published var name = ""
 }
