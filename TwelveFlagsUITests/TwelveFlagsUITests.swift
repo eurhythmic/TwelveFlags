@@ -8,7 +8,6 @@
 import XCTest
 
 class TwelveFlagsUITests: XCTestCase {
-
     override func setUpWithError() throws {
         // This method is called before the invocation of each test method in the class.
         let app = XCUIApplication()

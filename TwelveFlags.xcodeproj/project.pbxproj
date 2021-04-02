@@ -26,6 +26,7 @@
 		BC58FCE825B3E6680061F382 /* ScoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC58FCE725B3E6680061F382 /* ScoreListView.swift */; };
 		BC58FCED25B51A880061F382 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC58FCEC25B51A880061F382 /* StartViewModel.swift */; };
 		BC58FCF025B541150061F382 /* BorderButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC58FCEF25B541150061F382 /* BorderButtonStyle.swift */; };
+		BC598ADC261283B500376541 /* TwelveFlagsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC598ADB261283B500376541 /* TwelveFlagsTests.swift */; };
 		BC5D1A45252966950039A0D9 /* TwelveFlagsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D1A44252966950039A0D9 /* TwelveFlagsApp.swift */; };
 		BC5D1A47252966950039A0D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D1A46252966950039A0D9 /* ContentView.swift */; };
 		BC5D1A49252966970039A0D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC5D1A48252966970039A0D9 /* Assets.xcassets */; };
@@ -39,6 +40,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BC598ADE261283B500376541 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC5D1A39252966950039A0D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC5D1A40252966950039A0D9;
+			remoteInfo = TwelveFlags;
+		};
 		BC86B37725F41D3600EEE70A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC5D1A39252966950039A0D9 /* Project object */;
@@ -65,6 +73,9 @@
 		BC58FCE725B3E6680061F382 /* ScoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreListView.swift; sourceTree = "<group>"; };
 		BC58FCEC25B51A880061F382 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		BC58FCEF25B541150061F382 /* BorderButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButtonStyle.swift; sourceTree = "<group>"; };
+		BC598AD9261283B500376541 /* TwelveFlagsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwelveFlagsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC598ADB261283B500376541 /* TwelveFlagsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwelveFlagsTests.swift; sourceTree = "<group>"; };
+		BC598ADD261283B500376541 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC5D1A41252966950039A0D9 /* TwelveFlags.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwelveFlags.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC5D1A44252966950039A0D9 /* TwelveFlagsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwelveFlagsApp.swift; sourceTree = "<group>"; };
 		BC5D1A46252966950039A0D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -82,6 +93,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BC598AD6261283B500376541 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC5D1A3E252966950039A0D9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -169,6 +187,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		BC598ADA261283B500376541 /* TwelveFlagsTests */ = {
+			isa = PBXGroup;
+			children = (
+				BC598ADB261283B500376541 /* TwelveFlagsTests.swift */,
+				BC598ADD261283B500376541 /* Info.plist */,
+			);
+			path = TwelveFlagsTests;
+			sourceTree = "<group>";
+		};
 		BC5D1A38252966950039A0D9 = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +203,7 @@
 				BC58FC5C259AB2810061F382 /* GoogleService-Info.plist */,
 				BC58FC63259AB6B80061F382 /* AppDelegate.swift */,
 				BC86B37325F41D3600EEE70A /* TwelveFlagsUITests */,
+				BC598ADA261283B500376541 /* TwelveFlagsTests */,
 				BC5D1A42252966950039A0D9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -185,6 +213,7 @@
 			children = (
 				BC5D1A41252966950039A0D9 /* TwelveFlags.app */,
 				BC86B37225F41D3600EEE70A /* TwelveFlagsUITests.xctest */,
+				BC598AD9261283B500376541 /* TwelveFlagsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -237,6 +266,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BC598AD8261283B500376541 /* TwelveFlagsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC598AE2261283B500376541 /* Build configuration list for PBXNativeTarget "TwelveFlagsTests" */;
+			buildPhases = (
+				BC598AD5261283B500376541 /* Sources */,
+				BC598AD6261283B500376541 /* Frameworks */,
+				BC598AD7261283B500376541 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC598ADF261283B500376541 /* PBXTargetDependency */,
+			);
+			name = TwelveFlagsTests;
+			productName = TwelveFlagsTests;
+			productReference = BC598AD9261283B500376541 /* TwelveFlagsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BC5D1A40252966950039A0D9 /* TwelveFlags */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC5D1A50252966970039A0D9 /* Build configuration list for PBXNativeTarget "TwelveFlags" */;
@@ -286,6 +333,10 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					BC598AD8261283B500376541 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = BC5D1A40252966950039A0D9;
+					};
 					BC5D1A40252966950039A0D9 = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -313,11 +364,19 @@
 			targets = (
 				BC5D1A40252966950039A0D9 /* TwelveFlags */,
 				BC86B37125F41D3600EEE70A /* TwelveFlagsUITests */,
+				BC598AD8261283B500376541 /* TwelveFlagsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BC598AD7261283B500376541 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC5D1A3F252966950039A0D9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +398,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BC598AD5261283B500376541 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC598ADC261283B500376541 /* TwelveFlagsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC5D1A3D252966950039A0D9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -378,6 +445,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BC598ADF261283B500376541 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC5D1A40252966950039A0D9 /* TwelveFlags */;
+			targetProxy = BC598ADE261283B500376541 /* PBXContainerItemProxy */;
+		};
 		BC86B37825F41D3600EEE70A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BC5D1A40252966950039A0D9 /* TwelveFlags */;
@@ -386,6 +458,46 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		BC598AE0261283B500376541 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TwelveFlagsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rnd.TwelveFlagsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwelveFlags.app/TwelveFlags";
+			};
+			name = Debug;
+		};
+		BC598AE1261283B500376541 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TwelveFlagsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rnd.TwelveFlagsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwelveFlags.app/TwelveFlags";
+			};
+			name = Release;
+		};
 		BC5D1A4E252966970039A0D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -587,6 +699,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BC598AE2261283B500376541 /* Build configuration list for PBXNativeTarget "TwelveFlagsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC598AE0261283B500376541 /* Debug */,
+				BC598AE1261283B500376541 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BC5D1A3C252966950039A0D9 /* Build configuration list for PBXProject "TwelveFlags" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
