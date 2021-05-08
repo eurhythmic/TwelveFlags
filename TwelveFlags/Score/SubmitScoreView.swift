@@ -10,8 +10,8 @@ import Combine
 
 struct SubmitScoreView: View {
     @ObservedObject var content: ContentViewModel
-    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var scoreList: ScoreListViewModel
+    @ObservedObject var submitScore = SubmitScoreViewModel()
     let characterLimit = 25
     
     var body: some View {
@@ -35,15 +35,20 @@ struct SubmitScoreView: View {
                 .onReceive(Just(content.name), perform: { _ in
                     limitTextFieldCharacters(with: characterLimit)
                 })
+                .disabled(submitScore.buttonTapped == true)
             
-            Button(action: addScore) {
+            Button(action: {
+                submitScore.buttonTapped.toggle()
+                addScore()
+            }) {
                 Text("Add New Score")
                     .textCase(.uppercase)
                     .font(CustomFont.PressStart2P(size: 15))
-                    .shadow(color: .primary, radius: 1)
-                    .shadow(color: .primary, radius: 1)
-                    .shadow(color: .primary, radius: 1)
+                    .shadow(color: .primary, radius: content.name.isEmpty ? 0 : 1)
+                    .shadow(color: .primary, radius: content.name.isEmpty ? 0 : 1)
+                    .shadow(color: .primary, radius: content.name.isEmpty ? 0 : 1)
             }
+            .disabled(content.name.isEmpty || submitScore.buttonTapped == true)
             
             Divider()
                 .frame(height: 1)
@@ -66,7 +71,7 @@ struct SubmitScoreView: View {
         
         scoreList.add(score)
         
-        presentationMode.wrappedValue.dismiss()
+        content.name = ""
     }
 }
 

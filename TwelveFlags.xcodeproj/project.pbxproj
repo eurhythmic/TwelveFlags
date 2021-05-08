@@ -36,6 +36,7 @@
 		BC8D22D225771E01001B143E /* FloatingNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D22D125771E01001B143E /* FloatingNoticeView.swift */; };
 		BC8D22D825774C00001B143E /* FloatingNoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D22D725774C00001B143E /* FloatingNoticeViewModel.swift */; };
 		BC8D22DF258D6C2E001B143E /* View+Glow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D22DE258D6C2E001B143E /* View+Glow.swift */; };
+		BCA91A7C26461C5B0057B92D /* SubmitScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA91A7B26461C5B0057B92D /* SubmitScoreViewModel.swift */; };
 		BCB997D9256F333600BACDBC /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB997D8256F333600BACDBC /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,7 @@
 		BC8D22D125771E01001B143E /* FloatingNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingNoticeView.swift; sourceTree = "<group>"; };
 		BC8D22D725774C00001B143E /* FloatingNoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingNoticeViewModel.swift; sourceTree = "<group>"; };
 		BC8D22DE258D6C2E001B143E /* View+Glow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Glow.swift"; sourceTree = "<group>"; };
+		BCA91A7B26461C5B0057B92D /* SubmitScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitScoreViewModel.swift; sourceTree = "<group>"; };
 		BCB997D8256F333600BACDBC /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 				BC58FC7B259ACED80061F382 /* ScoreListViewModel.swift */,
 				BC58FCE725B3E6680061F382 /* ScoreListView.swift */,
 				BC58FC7E259AE8850061F382 /* SubmitScoreView.swift */,
+				BCA91A7B26461C5B0057B92D /* SubmitScoreViewModel.swift */,
 			);
 			path = Score;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				BC58FCF025B541150061F382 /* BorderButtonStyle.swift in Sources */,
 				BC58FCDB25B3A5EB0061F382 /* AuthenticationService.swift in Sources */,
 				BC58FCED25B51A880061F382 /* StartViewModel.swift in Sources */,
+				BCA91A7C26461C5B0057B92D /* SubmitScoreViewModel.swift in Sources */,
 				BCB997D9256F333600BACDBC /* ContentViewModel.swift in Sources */,
 				BC58FCE825B3E6680061F382 /* ScoreListView.swift in Sources */,
 				BC58FC7C259ACED80061F382 /* ScoreListViewModel.swift in Sources */,
