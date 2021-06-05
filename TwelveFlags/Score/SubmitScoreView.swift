@@ -38,7 +38,7 @@ struct SubmitScoreView: View {
                 .disabled(submitScore.buttonTapped == true)
             
             Button(action: {
-                submitScore.buttonTapped.toggle()
+                submitScore.buttonTapped = true
                 addScore()
             }) {
                 Text("Add New Score")
@@ -71,7 +71,7 @@ struct SubmitScoreView: View {
         
         scoreList.add(score)
         
-        content.name = ""
+        content.name.removeAll()
     }
 }
 

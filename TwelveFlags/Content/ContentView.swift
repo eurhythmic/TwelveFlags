@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var content = ContentViewModel()
     let floating = FloatingNoticeViewModel()
-    @ObservedObject var start: StartViewModel
+    let start: StartViewModel
     @Environment(\.presentationMode) var presentation
     
     var body: some View {

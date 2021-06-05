@@ -176,8 +176,8 @@
 				BC58FC6C259AC8BD0061F382 /* ScoreRepository.swift */,
 				BC58FC7B259ACED80061F382 /* ScoreListViewModel.swift */,
 				BC58FCE725B3E6680061F382 /* ScoreListView.swift */,
-				BC58FC7E259AE8850061F382 /* SubmitScoreView.swift */,
 				BCA91A7B26461C5B0057B92D /* SubmitScoreViewModel.swift */,
+				BC58FC7E259AE8850061F382 /* SubmitScoreView.swift */,
 			);
 			path = Score;
 			sourceTree = "<group>";

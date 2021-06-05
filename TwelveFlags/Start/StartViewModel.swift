@@ -7,6 +7,6 @@
 
 import Foundation
 
-class StartViewModel: ObservableObject {
-    @Published var isRankedMode = false
+class StartViewModel {
+    var isRankedMode = false
 }

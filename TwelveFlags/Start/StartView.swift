@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StartView: View {
-    @ObservedObject var start = StartViewModel()
+    let start = StartViewModel()
     
     var body: some View {
         NavigationView {
