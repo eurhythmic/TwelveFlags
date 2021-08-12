@@ -31,6 +31,8 @@
 		BC5D1A47252966950039A0D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D1A46252966950039A0D9 /* ContentView.swift */; };
 		BC5D1A49252966970039A0D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC5D1A48252966970039A0D9 /* Assets.xcassets */; };
 		BC5D1A4C252966970039A0D9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC5D1A4B252966970039A0D9 /* Preview Assets.xcassets */; };
+		BC79FBC726C47BBD00702FB0 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC79FBC626C47BBD00702FB0 /* Generator.swift */; };
+		BC79FBC926C47D5A00702FB0 /* FlagGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC79FBC826C47D5A00702FB0 /* FlagGenerator.swift */; };
 		BC86B37525F41D3600EEE70A /* TwelveFlagsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC86B37425F41D3600EEE70A /* TwelveFlagsUITests.swift */; };
 		BC86B37F25F4353D00EEE70A /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC86B37E25F4353D00EEE70A /* SnapshotHelper.swift */; };
 		BC8D22D225771E01001B143E /* FloatingNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D22D125771E01001B143E /* FloatingNoticeView.swift */; };
@@ -83,6 +85,8 @@
 		BC5D1A48252966970039A0D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC5D1A4B252966970039A0D9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BC5D1A4D252966970039A0D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC79FBC626C47BBD00702FB0 /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		BC79FBC826C47D5A00702FB0 /* FlagGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagGenerator.swift; sourceTree = "<group>"; };
 		BC86B37225F41D3600EEE70A /* TwelveFlagsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwelveFlagsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC86B37425F41D3600EEE70A /* TwelveFlagsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwelveFlagsUITests.swift; sourceTree = "<group>"; };
 		BC86B37625F41D3600EEE70A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -229,6 +233,7 @@
 				BC01835D25C4E5F200FE91F9 /* FloatingNotice */,
 				BC01835B25C4E48000FE91F9 /* Start */,
 				BC58FCD425B12F490061F382 /* Score */,
+				BC79FBC526C4783A00702FB0 /* Generator */,
 				BC58FCD925B3A5BF0061F382 /* Services */,
 				BC01836025C6463500FE91F9 /* Styles */,
 				BC8D22E2258D70CE001B143E /* Extensions */,
@@ -246,6 +251,15 @@
 				BC5D1A4B252966970039A0D9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BC79FBC526C4783A00702FB0 /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				BC79FBC626C47BBD00702FB0 /* Generator.swift */,
+				BC79FBC826C47D5A00702FB0 /* FlagGenerator.swift */,
+			);
+			path = Generator;
 			sourceTree = "<group>";
 		};
 		BC86B37325F41D3600EEE70A /* TwelveFlagsUITests */ = {
@@ -428,8 +442,10 @@
 				BC58FC71259AC9D30061F382 /* Score.swift in Sources */,
 				BC58FCF025B541150061F382 /* BorderButtonStyle.swift in Sources */,
 				BC58FCDB25B3A5EB0061F382 /* AuthenticationService.swift in Sources */,
+				BC79FBC926C47D5A00702FB0 /* FlagGenerator.swift in Sources */,
 				BC58FCED25B51A880061F382 /* StartViewModel.swift in Sources */,
 				BCA91A7C26461C5B0057B92D /* SubmitScoreViewModel.swift in Sources */,
+				BC79FBC726C47BBD00702FB0 /* Generator.swift in Sources */,
 				BCB997D9256F333600BACDBC /* ContentViewModel.swift in Sources */,
 				BC58FCE825B3E6680061F382 /* ScoreListView.swift in Sources */,
 				BC58FC7C259ACED80061F382 /* ScoreListViewModel.swift in Sources */,

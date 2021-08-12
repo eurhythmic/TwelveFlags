@@ -9,4 +9,5 @@ import Foundation
 
 class SubmitScoreViewModel: ObservableObject {
     @Published var buttonTapped = false
+    let characterLimit = 25
 }

@@ -12,7 +12,6 @@ struct SubmitScoreView: View {
     @ObservedObject var content: ContentViewModel
     @ObservedObject var scoreList: ScoreListViewModel
     @ObservedObject var submitScore = SubmitScoreViewModel()
-    let characterLimit = 25
     
     var body: some View {
         VStack {
@@ -26,14 +25,14 @@ struct SubmitScoreView: View {
                     .font(CustomFont.PressStart2P(size: 25))
             }
             
-            TextField("Enter 1Up Initials!", text: $content.name)
+            TextField("Enter 1Up Initials!", text: $content.playerName)
                 .textCase(.uppercase)
                 .multilineTextAlignment(.center)
                 .font(CustomFont.PressStart2P(size: 15))
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .onReceive(Just(content.name), perform: { _ in
-                    limitTextFieldCharacters(with: characterLimit)
+                .onReceive(Just(content.playerName), perform: { _ in
+                    limitTextFieldCharacters(with: submitScore.characterLimit)
                 })
                 .disabled(submitScore.buttonTapped == true)
             
@@ -44,11 +43,11 @@ struct SubmitScoreView: View {
                 Text("Add New Score")
                     .textCase(.uppercase)
                     .font(CustomFont.PressStart2P(size: 15))
-                    .shadow(color: .primary, radius: content.name.isEmpty ? 0 : 1)
-                    .shadow(color: .primary, radius: content.name.isEmpty ? 0 : 1)
-                    .shadow(color: .primary, radius: content.name.isEmpty ? 0 : 1)
+                    .shadow(color: .primary, radius: content.playerName.isEmpty ? 0 : 1)
+                    .shadow(color: .primary, radius: content.playerName.isEmpty ? 0 : 1)
+                    .shadow(color: .primary, radius: content.playerName.isEmpty ? 0 : 1)
             }
-            .disabled(content.name.isEmpty || submitScore.buttonTapped == true)
+            .disabled(content.playerName.isEmpty || submitScore.buttonTapped == true)
             
             Divider()
                 .frame(height: 1)
@@ -61,23 +60,23 @@ struct SubmitScoreView: View {
     }
     
     private func limitTextFieldCharacters(with upperLimit: Int) {
-        if content.name.count > upperLimit {
-            content.name = String(content.name.prefix(upperLimit))
+        if content.playerName.count > upperLimit {
+            content.playerName = String(content.playerName.prefix(upperLimit))
         }
     }
     
     private func addScore() {
-        let score = Score(highScore: content.playerScore, name: content.name)
+        let score = Score(highScore: content.playerScore, name: content.playerName)
         
         scoreList.add(score)
         
-        content.name.removeAll()
+        content.playerName.removeAll()
     }
 }
 
 struct SubmitScoreView_Previews: PreviewProvider {
     static var previews: some View {
-        SubmitScoreView(content: ContentViewModel(), scoreList: ScoreListViewModel())
+        SubmitScoreView(content: ContentViewModel(generator: FlagGenerator()), scoreList: ScoreListViewModel())
             .preferredColorScheme(.dark)
     }
 }

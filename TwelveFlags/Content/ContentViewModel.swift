@@ -6,13 +6,27 @@
 //
 
 import Foundation
+import Combine
 
 class ContentViewModel: ObservableObject {
-    @Published var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
+    var countries: [String] = []
+    var generator: Generator
+    var cancellable: AnyCancellable?
+    
+    init(generator: Generator) {
+        self.generator = generator
+        cancellable = generator
+            .flagPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.countries = $0
+            }
+    }
+    
     @Published var correctAnswer = Int.random(in: 0...2)
     @Published var showingNotice = false
     @Published var playerScore = 0
     @Published var isAnswerSelected = false
     @Published var showSubmitScoreView = false
-    @Published var name = ""
+    @Published var playerName = ""
 }

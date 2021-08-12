@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var content = ContentViewModel()
+    @ObservedObject var content = ContentViewModel(generator: FlagGenerator())
     let floating = FloatingNoticeViewModel()
     let start: StartViewModel
     @Environment(\.presentationMode) var presentation
