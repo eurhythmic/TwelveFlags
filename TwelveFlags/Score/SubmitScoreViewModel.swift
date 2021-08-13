@@ -8,6 +8,7 @@
 import Foundation
 
 class SubmitScoreViewModel: ObservableObject {
+    @Published var playerName = ""
     @Published var buttonTapped = false
     let characterLimit = 25
 }
