@@ -19,10 +19,12 @@ class TwelveFlagsTests: XCTestCase {
 
     func testInitialCountries() {
         // Given
-        let model = ContentViewModel()
+        let model = ContentViewModel(generator: FlagGenerator())
         
         // Then
-        XCTAssertEqual(model.countries.count, 12, "countries is not 12")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssertEqual(model.countries.count, 12, "countries is not 12")
+        }
     }
         
     func testUserIDLoaded() throws {
