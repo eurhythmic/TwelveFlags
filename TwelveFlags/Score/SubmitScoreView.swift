@@ -10,7 +10,7 @@ import Combine
 
 struct SubmitScoreView: View {
     @ObservedObject var content: ContentViewModel
-    @ObservedObject var scoreList: ScoreListViewModel
+    @StateObject var scoreList = ScoreListViewModel()
     @StateObject var submitScore = SubmitScoreViewModel()
     
     var body: some View {
@@ -54,7 +54,7 @@ struct SubmitScoreView: View {
                 .background(Color.primary)
                 .padding()
             
-            ScoreListView()
+            ScoreListView(scoreList: scoreList)
         }
         .background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing))
     }

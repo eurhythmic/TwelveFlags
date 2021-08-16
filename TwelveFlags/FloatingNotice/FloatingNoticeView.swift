@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FloatingNoticeView: View {
-    @EnvironmentObject var floating: FloatingNoticeViewModel
+    @ObservedObject var floating: FloatingNoticeViewModel
     
      var body: some View {
          VStack {
@@ -27,6 +27,6 @@ struct FloatingNoticeView: View {
 
 struct FloatingNoticeView_Previews: PreviewProvider {
     static var previews: some View {
-        FloatingNoticeView().environmentObject(FloatingNoticeViewModel())
+        FloatingNoticeView(floating: FloatingNoticeViewModel())
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScoreListView: View {
-    @ObservedObject var scoreList = ScoreListViewModel()
+    @ObservedObject var scoreList: ScoreListViewModel
     
     var body: some View {
         ScrollView {

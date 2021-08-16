@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var content = ContentViewModel(generator: FlagGenerator())
-    let floating = FloatingNoticeViewModel()
+    @StateObject var floating = FloatingNoticeViewModel()
     let start: StartViewModel
     @Environment(\.presentationMode) var presentation
     
@@ -74,7 +74,7 @@ struct ContentView: View {
                 }
                 
                 if content.showingNotice {
-                    FloatingNoticeView().environmentObject(floating)
+                    FloatingNoticeView(floating: floating)
                             .onAppear {
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                     content.showingNotice.toggle()
