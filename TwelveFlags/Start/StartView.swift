@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StartView: View {
     let start = StartViewModel()
+    let content = ContentViewModel(generator: FlagGenerator())
     
     var body: some View {
         NavigationView {
@@ -23,7 +24,7 @@ struct StartView: View {
                         .font(.title)
                 }
                 
-                NavigationLink(destination: ContentView(start: start)
+                NavigationLink(destination: ContentView(content: content, start: start)
                     .onAppear {
                         self.start.isRankedMode = false
                     }
@@ -33,7 +34,7 @@ struct StartView: View {
                     Text("Single Player")
                 }.buttonStyle(FilledButton())
                 
-                NavigationLink(destination: ContentView(start: start)
+                NavigationLink(destination: ContentView(content: content, start: start)
                 .onAppear {
                     self.start.isRankedMode = true
                 }

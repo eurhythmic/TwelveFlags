@@ -26,6 +26,8 @@ class ContentViewModel: ObservableObject {
     @Published var correctAnswer = Int.random(in: 0...2)
     @Published var showingNotice = false
     @Published var playerScore = 0
+    @Published var rankedPlayerScore = 0
     @Published var isAnswerSelected = false
     @Published var showSubmitScoreView = false
+    @Published var animateShadow = false
 }

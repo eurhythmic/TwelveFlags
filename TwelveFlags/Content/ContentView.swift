@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var content = ContentViewModel(generator: FlagGenerator())
+    @ObservedObject var content: ContentViewModel
     @StateObject var floating = FloatingNoticeViewModel()
     let start: StartViewModel
     @Environment(\.presentationMode) var presentation
@@ -45,12 +45,36 @@ struct ContentView: View {
                     }
                     
                     VStack {
-                        Text("\(content.playerScore)")
-                            .foregroundColor(.white)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .transition(AnyTransition.scale.animation(.easeInOut(duration: 0.25)))
-                            .id("playerScore \(content.playerScore)")
+                        if !start.isRankedMode {
+                            Text("\(content.playerScore)")
+                                .foregroundColor(.white)
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .transition(AnyTransition.scale.animation(.easeInOut(duration: 0.25)))
+                                .id("playerScore \(content.playerScore)")
+                        } else {
+                            Text("\(content.rankedPlayerScore)")
+                                .foregroundColor(.white)
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .transition(AnyTransition.scale.animation(.easeInOut(duration: 0.25)))
+                                .id("playerScore \(content.rankedPlayerScore)")
+                                .glow(color: .blue, radius: content.animateShadow ? 7 : 0)
+                                .onAppear {
+                                    // Set initial state of shadow animation
+                                    content.animateShadow = false
+                                }
+                                .animation(.easeInOut(duration: 1).delay(1).repeatForever(autoreverses: true))
+                                .onReceive(content.$rankedPlayerScore.dropFirst()) { _ in
+                                    // Reset state of shadow animation
+                                    content.animateShadow = false
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                        // Begin shadow animation
+                                        content.animateShadow = true
+                                    }
+                                }
+                        }
                         
                         if !start.isRankedMode {
                             Text("High Score")
@@ -93,11 +117,18 @@ struct ContentView: View {
         
         if number == content.correctAnswer {
             floating.symbol = "checkmark.seal"
-            content.playerScore += 1
+            if !start.isRankedMode {
+                content.playerScore += 1
+            } else {
+                content.rankedPlayerScore += 1
+            }
+            
         } else {
             floating.symbol = "xmark.seal"
-            if content.playerScore > 0 {
+            if !start.isRankedMode && content.playerScore > 0 {
                 content.playerScore -= 1
+            } else if content.rankedPlayerScore > 0 {
+                content.rankedPlayerScore -= 1
             }
         }
         
@@ -113,6 +144,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(start: StartViewModel())
+        ContentView(content: ContentViewModel(generator: FlagGenerator()), start: StartViewModel())
     }
 }

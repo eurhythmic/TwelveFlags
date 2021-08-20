@@ -21,7 +21,7 @@ struct SubmitScoreView: View {
                     .font(CustomFont.PressStart2P(size: 20))
                     .padding(.top)
                 
-                Text("\(content.playerScore)")
+                Text("\(content.rankedPlayerScore)")
                     .font(CustomFont.PressStart2P(size: 25))
             }
             
