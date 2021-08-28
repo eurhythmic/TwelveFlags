@@ -56,7 +56,7 @@ struct SubmitScoreView: View {
             
             ScoreListView(scoreList: scoreList)
         }
-        .background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing))
+        .background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing).ignoresSafeArea())
     }
     
     private func limitTextFieldCharacters(with upperLimit: Int) {
