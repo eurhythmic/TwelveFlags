@@ -10,6 +10,7 @@ import SwiftUI
 struct StartView: View {
     let start = StartViewModel()
     let content = ContentViewModel(generator: FlagGenerator())
+    @StateObject var settingsViewModel = SettingsViewModel()
     
     var body: some View {
         NavigationView {
@@ -54,6 +55,7 @@ struct StartView: View {
             .navigationBarTitle("")
             .navigationBarHidden(true)
         }
+        .environmentObject(settingsViewModel)
     }
 }
 

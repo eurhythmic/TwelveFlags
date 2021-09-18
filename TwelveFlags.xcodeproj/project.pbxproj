@@ -38,6 +38,10 @@
 		BC8D22D225771E01001B143E /* FloatingNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D22D125771E01001B143E /* FloatingNoticeView.swift */; };
 		BC8D22D825774C00001B143E /* FloatingNoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D22D725774C00001B143E /* FloatingNoticeViewModel.swift */; };
 		BC8D22DF258D6C2E001B143E /* View+Glow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D22DE258D6C2E001B143E /* View+Glow.swift */; };
+		BCA56CE426F3C42E004DFB71 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA56CE326F3C42E004DFB71 /* SettingsView.swift */; };
+		BCA56CE626F54738004DFB71 /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA56CE526F54738004DFB71 /* SettingsStorage.swift */; };
+		BCA56CE826F56504004DFB71 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA56CE726F56504004DFB71 /* SettingsViewModel.swift */; };
+		BCA56CEA26F566F9004DFB71 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA56CE926F566F9004DFB71 /* Settings.swift */; };
 		BCA91A7C26461C5B0057B92D /* SubmitScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA91A7B26461C5B0057B92D /* SubmitScoreViewModel.swift */; };
 		BCB997D9256F333600BACDBC /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB997D8256F333600BACDBC /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -94,6 +98,10 @@
 		BC8D22D125771E01001B143E /* FloatingNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingNoticeView.swift; sourceTree = "<group>"; };
 		BC8D22D725774C00001B143E /* FloatingNoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingNoticeViewModel.swift; sourceTree = "<group>"; };
 		BC8D22DE258D6C2E001B143E /* View+Glow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Glow.swift"; sourceTree = "<group>"; };
+		BCA56CE326F3C42E004DFB71 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BCA56CE526F54738004DFB71 /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
+		BCA56CE726F56504004DFB71 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		BCA56CE926F566F9004DFB71 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		BCA91A7B26461C5B0057B92D /* SubmitScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitScoreViewModel.swift; sourceTree = "<group>"; };
 		BCB997D8256F333600BACDBC /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,6 +241,7 @@
 				BC01835D25C4E5F200FE91F9 /* FloatingNotice */,
 				BC01835B25C4E48000FE91F9 /* Start */,
 				BC58FCD425B12F490061F382 /* Score */,
+				BCA56CE226F3C346004DFB71 /* Settings */,
 				BC79FBC526C4783A00702FB0 /* Generator */,
 				BC58FCD925B3A5BF0061F382 /* Services */,
 				BC01836025C6463500FE91F9 /* Styles */,
@@ -278,6 +287,17 @@
 				BC8D22DE258D6C2E001B143E /* View+Glow.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BCA56CE226F3C346004DFB71 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BCA56CE726F56504004DFB71 /* SettingsViewModel.swift */,
+				BCA56CE326F3C42E004DFB71 /* SettingsView.swift */,
+				BCA56CE926F566F9004DFB71 /* Settings.swift */,
+				BCA56CE526F54738004DFB71 /* SettingsStorage.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,9 +453,11 @@
 				BC8D22D225771E01001B143E /* FloatingNoticeView.swift in Sources */,
 				BC5D1A47252966950039A0D9 /* ContentView.swift in Sources */,
 				BC58FC82259BF9600061F382 /* StartView.swift in Sources */,
+				BCA56CE626F54738004DFB71 /* SettingsStorage.swift in Sources */,
 				BC5D1A45252966950039A0D9 /* TwelveFlagsApp.swift in Sources */,
 				BC58FCD225ABE35B0061F382 /* ScoreViewModel.swift in Sources */,
 				BC58FC6D259AC8BD0061F382 /* ScoreRepository.swift in Sources */,
+				BCA56CE426F3C42E004DFB71 /* SettingsView.swift in Sources */,
 				BC58FC64259AB6B80061F382 /* AppDelegate.swift in Sources */,
 				BC8D22D825774C00001B143E /* FloatingNoticeViewModel.swift in Sources */,
 				BC58FCCE25ABC29F0061F382 /* CustomFont.swift in Sources */,
@@ -446,8 +468,10 @@
 				BC58FCED25B51A880061F382 /* StartViewModel.swift in Sources */,
 				BCA91A7C26461C5B0057B92D /* SubmitScoreViewModel.swift in Sources */,
 				BC79FBC726C47BBD00702FB0 /* Generator.swift in Sources */,
+				BCA56CE826F56504004DFB71 /* SettingsViewModel.swift in Sources */,
 				BCB997D9256F333600BACDBC /* ContentViewModel.swift in Sources */,
 				BC58FCE825B3E6680061F382 /* ScoreListView.swift in Sources */,
+				BCA56CEA26F566F9004DFB71 /* Settings.swift in Sources */,
 				BC58FC7C259ACED80061F382 /* ScoreListViewModel.swift in Sources */,
 				BC58FC7F259AE8850061F382 /* SubmitScoreView.swift in Sources */,
 			);

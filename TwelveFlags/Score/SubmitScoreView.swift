@@ -9,9 +9,9 @@ import SwiftUI
 import Combine
 
 struct SubmitScoreView: View {
-    @ObservedObject var content: ContentViewModel
     @StateObject var scoreList = ScoreListViewModel()
     @StateObject var submitScore = SubmitScoreViewModel()
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     
     var body: some View {
         VStack {
@@ -21,7 +21,7 @@ struct SubmitScoreView: View {
                     .font(CustomFont.PressStart2P(size: 20))
                     .padding(.top)
                 
-                Text("\(content.rankedPlayerScore)")
+                Text("\(settingsViewModel.settings.rankedPlayerScore)")
                     .font(CustomFont.PressStart2P(size: 25))
             }
             
@@ -66,17 +66,22 @@ struct SubmitScoreView: View {
     }
     
     private func addScore() {
-        let score = Score(highScore: content.playerScore, name: submitScore.playerName)
+        let score = Score(highScore: settingsViewModel.settings.rankedPlayerScore, name: submitScore.playerName)
         
+        // Submit score
         scoreList.add(score)
         
+        // Assign text field value to `playerName` setting
+        settingsViewModel.settings.playerName = submitScore.playerName
+        
+        // Clear text field
         submitScore.playerName.removeAll()
     }
 }
 
 struct SubmitScoreView_Previews: PreviewProvider {
     static var previews: some View {
-        SubmitScoreView(content: ContentViewModel(generator: FlagGenerator()), scoreList: ScoreListViewModel())
+        SubmitScoreView(scoreList: ScoreListViewModel())
             .preferredColorScheme(.dark)
     }
 }

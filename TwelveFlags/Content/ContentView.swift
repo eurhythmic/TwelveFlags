@@ -12,6 +12,7 @@ struct ContentView: View {
     @StateObject var floating = FloatingNoticeViewModel()
     let start: StartViewModel
     @Environment(\.presentationMode) var presentation
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     
     var body: some View {
         NavigationView {
@@ -46,26 +47,26 @@ struct ContentView: View {
                     
                     VStack {
                         if !start.isRankedMode {
-                            Text("\(content.playerScore)")
+                            Text("\(settingsViewModel.settings.playerScore)")
                                 .foregroundColor(.white)
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .transition(AnyTransition.scale.animation(.easeInOut(duration: 0.25)))
-                                .id("playerScore \(content.playerScore)")
+                                .id("playerScore \(settingsViewModel.settings.playerScore)")
                         } else {
-                            Text("\(content.rankedPlayerScore)")
+                            Text("\(settingsViewModel.settings.rankedPlayerScore)")
                                 .foregroundColor(.white)
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .transition(AnyTransition.scale.animation(.easeInOut(duration: 0.25)))
-                                .id("playerScore \(content.rankedPlayerScore)")
+                                .id("rankedPlayerScore \(settingsViewModel.settings.rankedPlayerScore)")
                                 .glow(color: .blue, radius: content.animateShadow ? 7 : 0)
                                 .onAppear {
                                     // Set initial state of shadow animation
                                     content.animateShadow = false
                                 }
                                 .animation(.easeInOut(duration: 1).delay(1).repeatForever(autoreverses: true))
-                                .onReceive(content.$rankedPlayerScore.dropFirst()) { _ in
+                                .onReceive(settingsViewModel.settings.$rankedPlayerScore.dropFirst()) { _ in
                                     // Reset state of shadow animation
                                     content.animateShadow = false
                                     
@@ -84,15 +85,31 @@ struct ContentView: View {
                             Button("Submit Ranked Score", action: {
                                 content.showSubmitScoreView.toggle()
                             }).sheet(isPresented: $content.showSubmitScoreView, content: {
-                                SubmitScoreView(content: content, scoreList: ScoreListViewModel())
+                                SubmitScoreView(scoreList: ScoreListViewModel())
                                 })
                         }
                         
                         Spacer()
                         
-                        Button("Quit to Main Menu", action: {
-                            self.presentation.wrappedValue.dismiss()
-                        })
+                        HStack {
+                            Spacer()
+                            
+                            Button("Settings") {
+                                content.showSettingsView.toggle()
+                            }
+                            .sheet(isPresented: $content.showSettingsView, content: {
+                                SettingsView().environmentObject(settingsViewModel)
+                            })
+                            
+                            Spacer()
+                            
+                            Button("Quit to Main Menu") {
+                                self.presentation.wrappedValue.dismiss()
+                            }
+                            
+                            Spacer()
+                        }
+                        .padding(.bottom)
                     }
 
                 }
@@ -118,17 +135,17 @@ struct ContentView: View {
         if number == content.correctAnswer {
             floating.symbol = "checkmark.seal"
             if !start.isRankedMode {
-                content.playerScore += 1
+                settingsViewModel.settings.playerScore += 1
             } else {
-                content.rankedPlayerScore += 1
+                settingsViewModel.settings.rankedPlayerScore += 1
             }
             
         } else {
             floating.symbol = "xmark.seal"
-            if !start.isRankedMode && content.playerScore > 0 {
-                content.playerScore -= 1
-            } else if content.rankedPlayerScore > 0 {
-                content.rankedPlayerScore -= 1
+            if !start.isRankedMode && settingsViewModel.settings.playerScore > 0 {
+                settingsViewModel.settings.playerScore -= 1
+            } else if settingsViewModel.settings.rankedPlayerScore > 0 {
+                settingsViewModel.settings.rankedPlayerScore -= 1
             }
         }
         
