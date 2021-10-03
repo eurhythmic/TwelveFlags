@@ -7,6 +7,8 @@
 
 import Foundation
 
-class StartViewModel {
+class StartViewModel: ObservableObject {
     var isRankedMode = false
+    
+    @Published var animateText = false
 }

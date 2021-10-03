@@ -126,6 +126,9 @@ struct ContentView: View {
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
+            .onAppear {
+                settingsViewModel.settings.returningPlayer = true
+            }
         }
     }
     

@@ -12,9 +12,11 @@ struct Settings {
         static let playerName = "playerName"
         static let playerScore = "playerScore"
         static let rankedPlayerScore = "rankedPlayerScore"
+        static let returningPlayer = "returningPlayer"
     }
 
     @SettingsStorage(Settings.Key.playerName) var playerName = "1Up"
     @SettingsStorage(Settings.Key.playerScore) var playerScore = 0
     @SettingsStorage(Settings.Key.rankedPlayerScore) var rankedPlayerScore = 0
+    @SettingsStorage(Settings.Key.returningPlayer) var returningPlayer = false
 }

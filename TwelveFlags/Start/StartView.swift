@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StartView: View {
-    let start = StartViewModel()
+    @StateObject var start = StartViewModel()
     let content = ContentViewModel(generator: FlagGenerator())
     @StateObject var settingsViewModel = SettingsViewModel()
     
@@ -19,11 +19,29 @@ struct StartView: View {
                     Text("TwelveFlags")
                         .fontWeight(.heavy)
                         .font(.title)
-                        .padding(.bottom, 110)
+                        .padding(.bottom)
                     
                     Image(systemName: "flag.circle.fill")
                         .font(.title)
                 }
+                
+                if settingsViewModel.settings.returningPlayer {
+                    HStack {
+                        Text("Welcome back, \(settingsViewModel.settings.playerName)")
+                        Text("✨")
+                            .rotation3DEffect(.degrees(start.animateText ? 45 : 0), axis: (x: 0.0, y: 1.0, z: 0.0))
+                            .onAppear {
+                                DispatchQueue.main.async {
+                                    withAnimation(.easeInOut(duration: 2).repeatForever()) {
+                                        start.animateText = true
+                                    }
+                                }
+                            }
+                    }
+                }
+                
+                Spacer()
+                    .frame(maxHeight: 110)
                 
                 NavigationLink(destination: ContentView(content: content, start: start)
                     .onAppear {
