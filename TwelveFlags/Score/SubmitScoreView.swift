@@ -59,6 +59,9 @@ struct SubmitScoreView: View {
         .background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing).ignoresSafeArea())
     }
     
+    /// Limit player name text field characters
+    /// - Parameters:
+    ///   - upperLimit: The maximum number of characters to allow
     private func limitTextFieldCharacters(with upperLimit: Int) {
         if submitScore.playerName.count > upperLimit {
             submitScore.playerName = String(submitScore.playerName.prefix(upperLimit))

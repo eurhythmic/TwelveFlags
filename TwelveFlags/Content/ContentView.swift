@@ -85,7 +85,7 @@ struct ContentView: View {
                             Button("Submit Ranked Score", action: {
                                 content.showSubmitScoreView.toggle()
                             }).sheet(isPresented: $content.showSubmitScoreView, content: {
-                                SubmitScoreView(scoreList: ScoreListViewModel())
+                                SubmitScoreView(scoreList: ScoreListViewModel()).environmentObject(settingsViewModel)
                                 })
                         }
                         

@@ -13,7 +13,7 @@ class ContentViewModel: ObservableObject {
     var generator: Generator
     var cancellable: AnyCancellable?
     
-    init(generator: Generator) {
+    init(generator: Generator = FlagGenerator()) {
         self.generator = generator
         cancellable = generator
             .flagPublisher
