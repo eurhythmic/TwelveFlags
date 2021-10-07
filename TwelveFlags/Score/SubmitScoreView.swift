@@ -31,8 +31,8 @@ struct SubmitScoreView: View {
                 .font(CustomFont.PressStart2P(size: 15))
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .onReceive(Just(submitScore.playerName), perform: { _ in
-                    limitTextFieldCharacters(with: submitScore.characterLimit)
+                .onChange(of: submitScore.playerName, perform: { name in
+                    limitTextFieldCharacters(for: name, with: submitScore.characterLimit)
                 })
                 .disabled(submitScore.buttonTapped == true)
             
@@ -61,15 +61,16 @@ struct SubmitScoreView: View {
     
     /// Limit player name text field characters
     /// - Parameters:
+    ///   - value: The text field value
     ///   - upperLimit: The maximum number of characters to allow
-    private func limitTextFieldCharacters(with upperLimit: Int) {
-        if submitScore.playerName.count > upperLimit {
-            submitScore.playerName = String(submitScore.playerName.prefix(upperLimit))
+    private func limitTextFieldCharacters(for value: String, with upperLimit: Int) {
+        if value.count > upperLimit {
+            submitScore.playerName = String(value.prefix(upperLimit))
         }
     }
     
     private func addScore() {
-        let score = Score(highScore: settingsViewModel.settings.rankedPlayerScore, name: submitScore.playerName)
+        let score = Score(highScore: settingsViewModel.settings.rankedPlayerScore, name: submitScore.playerName.trimmingCharacters(in: .whitespaces))
         
         // Submit score
         scoreList.add(score)
