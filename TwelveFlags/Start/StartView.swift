@@ -26,8 +26,11 @@ struct StartView: View {
                 }
                 
                 if settingsViewModel.settings.returningPlayer {
-                    HStack {
                         Text("Welcome back, \(settingsViewModel.settings.playerName)")
+                            .textCase(.uppercase)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .minimumScaleFactor(0.5)
                         Text("✨")
                             .rotation3DEffect(.degrees(start.animateText ? 45 : 0), axis: (x: 0.0, y: 1.0, z: 0.0))
                             .onAppear {
@@ -37,7 +40,6 @@ struct StartView: View {
                                     }
                                 }
                             }
-                    }
                 }
                 
                 Spacer()
