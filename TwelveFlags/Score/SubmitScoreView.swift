@@ -35,7 +35,7 @@ struct SubmitScoreView: View {
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .onChange(of: submitScore.playerName, perform: { name in
-                    limitTextFieldCharacters(for: name, with: submitScore.characterLimit)
+                    submitScore.playerName = submitScore.limitTextFieldCharacters(for: name, with: submitScore.characterLimit)
                 })
                 .disabled(submitScore.scoreSent == true)
             
@@ -59,16 +59,6 @@ struct SubmitScoreView: View {
             ScoreListView(scoreList: scoreList)
         }
         .background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing).ignoresSafeArea())
-    }
-    
-    /// Limit player name text field characters
-    /// - Parameters:
-    ///   - value: The text field value
-    ///   - upperLimit: The maximum number of characters to allow
-    private func limitTextFieldCharacters(for value: String, with upperLimit: Int) {
-        if value.count > upperLimit {
-            submitScore.playerName = String(value.prefix(upperLimit))
-        }
     }
     
     private func submitAction() {
