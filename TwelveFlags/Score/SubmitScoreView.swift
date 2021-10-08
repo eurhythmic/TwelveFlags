@@ -25,8 +25,11 @@ struct SubmitScoreView: View {
                     .font(CustomFont.PressStart2P(size: 25))
             }
             
-            TextField("Enter 1Up Initials!", text: $submitScore.playerName)
-                .textCase(.uppercase)
+            TextField(submitScore.textFieldLabel, text: $submitScore.playerName, onCommit: {
+                submitAction()
+            })
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
                 .multilineTextAlignment(.center)
                 .font(CustomFont.PressStart2P(size: 15))
                 .padding()
@@ -34,11 +37,10 @@ struct SubmitScoreView: View {
                 .onChange(of: submitScore.playerName, perform: { name in
                     limitTextFieldCharacters(for: name, with: submitScore.characterLimit)
                 })
-                .disabled(submitScore.buttonTapped == true)
+                .disabled(submitScore.scoreSent == true)
             
             Button(action: {
-                submitScore.buttonTapped = true
-                addScore()
+                submitAction()
             }) {
                 Text("Add New Score")
                     .textCase(.uppercase)
@@ -47,7 +49,7 @@ struct SubmitScoreView: View {
                     .shadow(color: .primary, radius: submitScore.playerName.isEmpty ? 0 : 1)
                     .shadow(color: .primary, radius: submitScore.playerName.isEmpty ? 0 : 1)
             }
-            .disabled(submitScore.playerName.isEmpty || submitScore.buttonTapped == true)
+            .disabled(submitScore.playerName.isEmpty || submitScore.scoreSent == true)
             
             Divider()
                 .frame(height: 1)
@@ -69,8 +71,14 @@ struct SubmitScoreView: View {
         }
     }
     
+    private func submitAction() {
+        submitScore.scoreSent = true
+        submitScore.playerName = submitScore.playerName.trimmingCharacters(in: .whitespaces)
+        addScore()
+    }
+    
     private func addScore() {
-        let score = Score(highScore: settingsViewModel.settings.rankedPlayerScore, name: submitScore.playerName.trimmingCharacters(in: .whitespaces))
+        let score = Score(highScore: settingsViewModel.settings.rankedPlayerScore, name: submitScore.playerName)
         
         // Submit score
         scoreList.add(score)
