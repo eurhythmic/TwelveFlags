@@ -9,9 +9,9 @@ import Foundation
 import Combine
 
 class ContentViewModel: ObservableObject {
-    var countries: [String] = []
-    var generator: Generator
-    var cancellable: AnyCancellable?
+    private var flagArray: [String] = []
+    private var generator: Generator
+    private var cancellable: AnyCancellable?
     
     init(generator: Generator = FlagGenerator()) {
         self.generator = generator
@@ -19,7 +19,7 @@ class ContentViewModel: ObservableObject {
             .flagPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
-                self?.countries = $0
+                self?.flagArray = $0
             }
     }
     
@@ -29,4 +29,12 @@ class ContentViewModel: ObservableObject {
     @Published var showSubmitScoreView = false
     @Published var animateShadow = false
     @Published var showSettingsView = false
+    
+    func allFlags() -> [String] {
+        return flagArray
+    }
+    
+    func randomizeFlags() {
+        flagArray.shuffle()
+    }
 }

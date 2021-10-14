@@ -15,7 +15,7 @@ class SubmitScoreViewModel: ObservableObject {
         scoreSent ? "SUBMITTED" : "ENTER 1UP INITIALS!"
     }
     let characterLimit = 25
-    var cancellable: AnyCancellable?
+    private var cancellable: AnyCancellable?
     
     init() {
         trimTextFieldCharacters()

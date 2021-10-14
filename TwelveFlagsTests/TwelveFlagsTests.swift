@@ -23,7 +23,7 @@ class TwelveFlagsTests: XCTestCase {
         
         // Then
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            XCTAssertEqual(model.countries.count, 12, "countries is not 12")
+            XCTAssertEqual(model.allFlags().count, 12, "countries is not 12")
         }
     }
         

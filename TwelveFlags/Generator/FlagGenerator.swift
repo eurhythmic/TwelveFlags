@@ -12,7 +12,7 @@ class FlagGenerator: Generator, ObservableObject {
     
     var flagPublisher: Published<[String]>.Publisher { $flagNames }
     
-    var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"]
+    private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"]
     
     init() {
         generate()

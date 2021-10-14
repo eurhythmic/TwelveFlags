@@ -27,7 +27,7 @@ struct ContentView: View {
                         Text("Tap the flag of")
                             .foregroundColor(.white)
                         
-                        Text(content.countries[content.correctAnswer])
+                        Text(content.allFlags()[content.correctAnswer])
                             .foregroundColor(.white)
                             .font(.largeTitle)
                             .fontWeight(.black)
@@ -37,7 +37,7 @@ struct ContentView: View {
                             Button(action: {
                                 flagTapped(number)
                             }) {
-                                Image(content.countries[number])
+                                Image(content.allFlags()[number])
                                     .renderingMode(.original)
                                     .clipShape(Capsule())
                                     .overlay(Capsule().stroke(Color.black, lineWidth: 1))
@@ -156,7 +156,7 @@ struct ContentView: View {
     }
     
     func askQuestion() {
-        content.countries.shuffle()
+        content.randomizeFlags()
         content.correctAnswer = Int.random(in: 0...2)
         content.isAnswerSelected.toggle()
     }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StartView: View {
     @StateObject var start = StartViewModel()
-    let content = ContentViewModel()
+    private let content = ContentViewModel()
     @StateObject var settingsViewModel = SettingsViewModel()
     
     var body: some View {
