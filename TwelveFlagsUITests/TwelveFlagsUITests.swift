@@ -8,9 +8,11 @@
 import XCTest
 
 class TwelveFlagsUITests: XCTestCase {
+    var app: XCUIApplication!
+    
     override func setUpWithError() throws {
         // This method is called before the invocation of each test method in the class.
-        let app = XCUIApplication()
+        app = XCUIApplication()
         setupSnapshot(app)
         app.launch()
         
@@ -21,7 +23,6 @@ class TwelveFlagsUITests: XCTestCase {
         // Automate capturing of screenshots
         snapshot("01HomeScreen")
         
-        let app = XCUIApplication()
         app.buttons["Single Player"].tap()
         
         snapshot("02SinglePlayer")
@@ -32,9 +33,15 @@ class TwelveFlagsUITests: XCTestCase {
         
         snapshot("03RankedMode")
         
+        app.buttons["Settings"].tap()
+        
+        snapshot("04Settings")
+        
+        app.swipeDown(velocity: .fast)
+        
         app.buttons["Submit Ranked Score"].tap()
         
-        snapshot("04TopScores", timeWaitingForIdle: 3)
+        snapshot("05TopScores", timeWaitingForIdle: 3)
     }
 
     func testLaunchPerformance() throws {
