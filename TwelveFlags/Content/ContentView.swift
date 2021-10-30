@@ -84,7 +84,9 @@ struct ContentView: View {
                         } else {
                             Button("Submit Ranked Score", action: {
                                 content.showSubmitScoreView.toggle()
-                            }).sheet(isPresented: $content.showSubmitScoreView, content: {
+                            })
+                            .buttonStyle(FilledButton())
+                            .sheet(isPresented: $content.showSubmitScoreView, content: {
                                 SubmitScoreView(scoreList: ScoreListViewModel()).environmentObject(settingsViewModel)
                                 })
                         }
@@ -97,6 +99,7 @@ struct ContentView: View {
                             Button("Settings") {
                                 content.showSettingsView.toggle()
                             }
+                            .buttonStyle(BorderButton())
                             .sheet(isPresented: $content.showSettingsView, content: {
                                 SettingsView().environmentObject(settingsViewModel)
                             })
@@ -106,6 +109,7 @@ struct ContentView: View {
                             Button("Quit to Main Menu") {
                                 self.presentation.wrappedValue.dismiss()
                             }
+                            .buttonStyle(BorderButton())
                             
                             Spacer()
                         }

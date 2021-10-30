@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct FilledButton: ButtonStyle {
+    var padding: CGFloat = 7
+    var fontSize: CGFloat = 17
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration
             .label
-            .padding(18)
+            .padding(padding)
             .background(
                 ZStack {
                     RoundedRectangle(cornerRadius: 8, style: .continuous).fill(Color.blue).opacity(0.2)
@@ -20,8 +23,7 @@ struct FilledButton: ButtonStyle {
                 })
             .foregroundColor(configuration.isPressed ? Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)) : .blue)
             .cornerRadius(8)
-            .font(.system(size: 40))
+            .font(.system(size: fontSize))
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
-            .animation(.spring())
     }
 }

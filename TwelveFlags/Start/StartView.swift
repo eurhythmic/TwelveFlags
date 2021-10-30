@@ -53,7 +53,9 @@ struct StartView: View {
                     .navigationBarHidden(true)
                 ) {
                     Text("Single Player")
-                }.buttonStyle(FilledButton())
+                }
+                .buttonStyle(FilledButton(padding: 18, fontSize: 40))
+                .animation(.spring())
                 
                 NavigationLink(destination: ContentView(content: content, start: start)
                 .onAppear {
@@ -70,7 +72,9 @@ struct StartView: View {
                             .foregroundColor(.blue)
                             .opacity(0.9)
                     }
-                }.buttonStyle(BorderButton())
+                }
+                .buttonStyle(BorderButton(padding: 7, fontSize: 40))
+                .animation(.spring())
             }
             .navigationBarTitle("")
             .navigationBarHidden(true)
