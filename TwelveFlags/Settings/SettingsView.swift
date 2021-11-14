@@ -41,9 +41,7 @@ struct SettingsView: View {
                     }
                     .alert(isPresented: $settingsViewModel.showingAlert) {
                         Alert(title: Text("Reset hard-earned notoriety?"), message: Text(settingsViewModel.playerNotoriety), primaryButton: .cancel(), secondaryButton: .destructive(Text("Proceed")) {
-                            settingsViewModel.settings.playerName = "Tommy Atkins"
-                            settingsViewModel.settings.playerScore = 0
-                            settingsViewModel.settings.rankedPlayerScore = 0
+                            settingsViewModel.resetPlayerNotoriety()
                         })
                     }
                     

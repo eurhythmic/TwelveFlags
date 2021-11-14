@@ -9,7 +9,7 @@ import Foundation
 
 class SettingsViewModel: ObservableObject {
     var playerNotoriety: String {
-            // Return one star if both scores are 0, three stars if either score is 1 or greater
+        // Return one star if both scores are 0, three stars if either score is 1 or greater
         switch (settings.playerScore, settings.rankedPlayerScore) {
             case (0, 0):
                 return "⭐"
@@ -22,4 +22,11 @@ class SettingsViewModel: ObservableObject {
     
     @Published var showingAlert = false
     @Published var settings = Settings()
+    
+    /// Resets all statistics for the current player
+    func resetPlayerNotoriety() {
+        settings.playerName = "Tommy Atkins"
+        settings.playerScore = 0
+        settings.rankedPlayerScore = 0
+    }
 }
