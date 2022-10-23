@@ -10,11 +10,20 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var settingsViewModel: SettingsViewModel
     
+    private var playerName: Binding<String> {
+        Binding {
+            settingsViewModel.settings.playerName
+        } set: {
+            let formattedName = $0.trimmingCharacters(in: .whitespacesAndNewlines)
+            settingsViewModel.settings.playerName = formattedName
+        }
+    }
+    
     var body: some View {
         Form {
             Section {
                 if settingsViewModel.showingTextField {
-                    TextField("Name", text: $settingsViewModel.settings.playerName)
+                    TextField("Name", text: playerName)
                         .font(CustomFont.PressStart2P(size: 25))
                         .textInputAutocapitalization(.characters)
                         .autocorrectionDisabled(true)
@@ -25,7 +34,7 @@ struct SettingsView: View {
                             }
                         }
                 } else {
-                    Text("\(settingsViewModel.settings.playerName) Dossier")
+                    Text(settingsViewModel.settings.playerName.isEmpty ? "Dossier" : "\(settingsViewModel.settings.playerName) Dossier")
                         .font(CustomFont.PressStart2P(size: 25))
                         .textCase(.uppercase)
                         .onTapGesture {
