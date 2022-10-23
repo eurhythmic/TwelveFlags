@@ -13,9 +13,27 @@ struct SettingsView: View {
     var body: some View {
         Form {
             Section {
-                Text("\(settingsViewModel.settings.playerName) dossier")
-                    .font(CustomFont.PressStart2P(size: 25))
-                    .textCase(.uppercase)
+                if settingsViewModel.showingTextField {
+                    TextField("Name", text: $settingsViewModel.settings.playerName)
+                        .font(CustomFont.PressStart2P(size: 25))
+                        .textInputAutocapitalization(.characters)
+                        .autocorrectionDisabled(true)
+                        .textCase(.uppercase)
+                        .onSubmit {
+                            withAnimation {
+                                settingsViewModel.showingTextField = false
+                            }
+                        }
+                } else {
+                    Text("\(settingsViewModel.settings.playerName) Dossier")
+                        .font(CustomFont.PressStart2P(size: 25))
+                        .textCase(.uppercase)
+                        .onTapGesture {
+                            withAnimation {
+                                settingsViewModel.showingTextField = true
+                            }
+                        }
+                }
             }
             
             Section {
@@ -57,5 +75,6 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
             .preferredColorScheme(.dark)
+            .environmentObject(SettingsViewModel())
     }
 }
