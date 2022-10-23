@@ -21,6 +21,7 @@ class SettingsViewModel: ObservableObject {
         }
     
     @Published var showingAlert = false
+    @Published var showingTextField = false
     @Published var settings = Settings()
     
     /// Resets all statistics for the current player
