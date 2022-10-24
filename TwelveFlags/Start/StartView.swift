@@ -9,8 +9,9 @@ import SwiftUI
 
 struct StartView: View {
     @StateObject var start = StartViewModel()
-    private let content = ContentViewModel()
-    @StateObject var settingsViewModel = SettingsViewModel()
+    @StateObject var singleContent = ContentViewModel()
+    @StateObject var rankedContent = ContentViewModel()
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     
     var body: some View {
         NavigationView {
@@ -45,7 +46,7 @@ struct StartView: View {
                 Spacer()
                     .frame(maxHeight: 110)
                 
-                NavigationLink(destination: ContentView(content: content, start: start)
+                NavigationLink(destination: ContentView(content: singleContent, start: start)
                     .onAppear {
                         self.start.isRankedMode = false
                     }
@@ -57,7 +58,7 @@ struct StartView: View {
                 .buttonStyle(FilledButton(padding: 18, fontSize: 40))
                 .animation(.spring())
                 
-                NavigationLink(destination: ContentView(content: content, start: start)
+                NavigationLink(destination: ContentView(content: rankedContent, start: start)
                 .onAppear {
                     self.start.isRankedMode = true
                 }
@@ -79,7 +80,6 @@ struct StartView: View {
             .navigationBarTitle("")
             .navigationBarHidden(true)
         }
-        .environmentObject(settingsViewModel)
     }
 }
 
@@ -88,6 +88,7 @@ struct StartView_Previews: PreviewProvider {
         Group {
             StartView()
                 .preferredColorScheme(.dark)
+                .environmentObject(SettingsViewModel())
         }
     }
 }

@@ -61,6 +61,14 @@ struct SettingsView: View {
             
             Section {
                 HStack {
+                    Text("LAST SPOTTED")
+                    Spacer()
+                    Text(settingsViewModel.settings.lastActive, format: .dateTime.minute().hour().day().month(.twoDigits).year(.twoDigits))
+                }
+            }
+            
+            Section {
+                HStack {
                     Spacer()
                     
                     Button("SHRED MY DOSSIER") {

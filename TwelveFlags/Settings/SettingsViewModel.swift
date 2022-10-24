@@ -29,5 +29,6 @@ class SettingsViewModel: ObservableObject {
         settings.playerName = "Tommy Atkins"
         settings.playerScore = 0
         settings.rankedPlayerScore = 0
+        settings.lastActive = Date.distantPast
     }
 }
