@@ -29,7 +29,7 @@ class TwelveFlagsUITests: XCTestCase {
         
         app.buttons["Quit to Main Menu"].tap()
         
-        app.buttons["Ranked Mode, COMPETE WITH PLAYERS WORLDWIDE"].tap()
+        app.buttons["Ranked Mode, Compete with players worldwide"].tap()
         
         snapshot("03RankedMode")
         
