@@ -7,6 +7,6 @@
 
 import Foundation
 
-class FloatingNoticeViewModel: ObservableObject {
-    @Published var symbol: String?
+@Observable class FloatingNoticeViewModel {
+    var symbol: String?
 }
