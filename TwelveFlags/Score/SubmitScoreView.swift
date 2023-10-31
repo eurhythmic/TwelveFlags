@@ -11,7 +11,7 @@ import Combine
 struct SubmitScoreView: View {
     @StateObject var scoreList = ScoreListViewModel()
     @StateObject var submitScore = SubmitScoreViewModel()
-    @Environment(SettingsViewModel.self) private var settingsViewModel
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     
     var body: some View {
         VStack {

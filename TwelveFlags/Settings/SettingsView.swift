@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @Environment(SettingsViewModel.self) private var settingsViewModel
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     
     private var playerName: Binding<String> {
         Binding {
@@ -20,8 +20,6 @@ struct SettingsView: View {
     }
     
     var body: some View {
-        @Bindable var settingsViewModel = settingsViewModel
-        
         Form {
             Section {
                 if settingsViewModel.showingTextField {
@@ -94,6 +92,6 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
             .preferredColorScheme(.dark)
-            .environment(SettingsViewModel())
+            .environmentObject(SettingsViewModel())
     }
 }

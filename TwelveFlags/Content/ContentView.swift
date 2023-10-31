@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Bindable var content: ContentViewModel
-    @State private var floating = FloatingNoticeViewModel()
+    @ObservedObject var content: ContentViewModel
+    @StateObject var floating = FloatingNoticeViewModel()
     let start: StartViewModel
     @Environment(\.presentationMode) var presentation
-    @Environment(SettingsViewModel.self) private var settingsViewModel
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     
     var body: some View {
         NavigationView {
@@ -87,7 +87,7 @@ struct ContentView: View {
                             })
                             .buttonStyle(FilledButton())
                             .sheet(isPresented: $content.showSubmitScoreView, content: {
-                                SubmitScoreView(scoreList: ScoreListViewModel()).environment(settingsViewModel)
+                                SubmitScoreView(scoreList: ScoreListViewModel()).environmentObject(settingsViewModel)
                                 })
                         }
                         
@@ -101,7 +101,7 @@ struct ContentView: View {
                             }
                             .buttonStyle(BorderButton())
                             .sheet(isPresented: $content.showSettingsView, content: {
-                                SettingsView().environment(settingsViewModel)
+                                SettingsView().environmentObject(settingsViewModel)
                             })
                             
                             Spacer()

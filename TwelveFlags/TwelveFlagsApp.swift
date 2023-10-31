@@ -11,12 +11,12 @@ import SwiftUI
 struct TwelveFlagsApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @Environment(\.scenePhase) private var scenePhase
-    @State private var settingsViewModel = SettingsViewModel()
+    @StateObject var settingsViewModel = SettingsViewModel()
     
     var body: some Scene {
         WindowGroup {
             StartView()
-                .environment(settingsViewModel)
+                .environmentObject(settingsViewModel)
         }
         .onChange(of: scenePhase) { phase in
             switch phase {

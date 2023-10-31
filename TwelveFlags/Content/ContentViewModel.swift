@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-@Observable class ContentViewModel {
+class ContentViewModel: ObservableObject {
     private var flagArray: [String] = []
     private var generator: Generator
     private var cancellable: AnyCancellable?
@@ -23,12 +23,12 @@ import Combine
             }
     }
     
-    var correctAnswer = Int.random(in: 0...2)
-    var showingNotice = false
-    var isAnswerSelected = false
-    var showSubmitScoreView = false
-    var animateShadow = false
-    var showSettingsView = false
+    @Published var correctAnswer = Int.random(in: 0...2)
+    @Published var showingNotice = false
+    @Published var isAnswerSelected = false
+    @Published var showSubmitScoreView = false
+    @Published var animateShadow = false
+    @Published var showSettingsView = false
     
     func allFlags() -> [String] {
         return flagArray

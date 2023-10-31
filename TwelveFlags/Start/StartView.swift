@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct StartView: View {
-    @State private var start = StartViewModel()
-    @State private var singleContent = ContentViewModel()
-    @State private var rankedContent = ContentViewModel()
-    @Environment(SettingsViewModel.self) private var settingsViewModel
+    @StateObject var start = StartViewModel()
+    @StateObject var singleContent = ContentViewModel()
+    @StateObject var rankedContent = ContentViewModel()
+    @EnvironmentObject var settingsViewModel: SettingsViewModel
     
     var body: some View {
         NavigationView {
@@ -88,7 +88,7 @@ struct StartView_Previews: PreviewProvider {
         Group {
             StartView()
                 .preferredColorScheme(.dark)
-                .environment(SettingsViewModel())
+                .environmentObject(SettingsViewModel())
         }
     }
 }
